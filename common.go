@@ -11,23 +11,47 @@ const (
 	AnthropicClaudeInstantV1 = "anthropic/claude-instant-v1"
 	MetaLlamaLlama213bChat   = "meta-llama/llama-2-13b-chat"
 	MetaLlamaLlama270bChat   = "meta-llama/llama-2-70b-chat"
+	Palm2CodeChatBison       = "palm-2-codechat-bison"
+	Palm2ChatBison           = "palm-2-chat-bison"
+	Gpt35Turbo               = "gpt-3.5-turbo"
+	Gpt35Turbo16k            = "gpt-3.5-turbo-16k"
+	Gpt4                     = "gpt-4"
+	G432K                    = "gpt-4-32k"
+	Claude2                  = "claude-2"
+	ClaudeInstantV1          = "claude-instant-v1"
+	Llama213bChat            = "llama-2-13b-chat"
+	Llama270bChat            = "llama-2-70b-chat"
 )
 
-var enableModelsForEndpoints = map[string]bool{
-	GooglePalm2CodeChatBison: true,
-	GooglePalm2ChatBison:     true,
-	OpenaiGpt35Turbo:         true,
-	OpenaiGpt35Turbo16k:      true,
-	OpenaiGpt4:               true,
-	OpenaiGpt432K:            true,
-	AnthropicClaude2:         true,
-	AnthropicClaudeInstantV1: true,
-	MetaLlamaLlama213bChat:   true,
-	MetaLlamaLlama270bChat:   true,
-}
+var (
+	enableModels = map[string]bool{
+		GooglePalm2CodeChatBison: true,
+		GooglePalm2ChatBison:     true,
+		OpenaiGpt35Turbo:         true,
+		OpenaiGpt35Turbo16k:      true,
+		OpenaiGpt4:               true,
+		OpenaiGpt432K:            true,
+		AnthropicClaude2:         true,
+		AnthropicClaudeInstantV1: true,
+		MetaLlamaLlama213bChat:   true,
+		MetaLlamaLlama270bChat:   true,
+	}
+	wrapperModels = map[string]string{
+		Palm2CodeChatBison: GooglePalm2CodeChatBison,
+		Palm2ChatBison:     GooglePalm2ChatBison,
+		Gpt35Turbo:         OpenaiGpt35Turbo,
+		Gpt35Turbo16k:      OpenaiGpt35Turbo16k,
+		Gpt4:               OpenaiGpt4,
+		G432K:              OpenaiGpt432K,
+		Claude2:            AnthropicClaude2,
+		ClaudeInstantV1:    AnthropicClaudeInstantV1,
+		Llama213bChat:      MetaLlamaLlama213bChat,
+		Llama270bChat:      MetaLlamaLlama270bChat,
+	}
+)
 
 func checkSupportsModel(model string) bool {
-	return enableModelsForEndpoints[model]
+	return enableModels[model]
 }
 
 type ChatCompletionMessage struct {
