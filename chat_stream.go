@@ -16,7 +16,7 @@ type ChatCompletionStream struct {
 // stream terminated by a data: [DONE] message.
 func (c *Client) CreateChatCompletionStream(
 	ctx context.Context,
-	request ChatCompletionRequest,
+	request *ChatCompletionRequest,
 ) (stream *ChatCompletionStream, err error) {
 	urlSuffix := "/chat/completions"
 	if !checkSupportsModel(request.Model) {

@@ -24,7 +24,7 @@ var (
 // CreateChatCompletion — API call to Create a completion for the chat message.
 func (c *Client) CreateChatCompletion(
 	ctx context.Context,
-	request ChatCompletionRequest,
+	request *ChatCompletionRequest,
 ) (response *ChatCompletionResponse, err error) {
 	if request.Stream {
 		err = ErrChatCompletionStreamNotSupported

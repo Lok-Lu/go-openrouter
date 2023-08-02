@@ -8,7 +8,7 @@ import (
 func TestClient_CreateChatCompletion(t *testing.T) {
 	client, _ := NewClient("", "", "")
 
-	req := ChatCompletionRequest{
+	req := &ChatCompletionRequest{
 		Model: "claude-2",
 		Messages: []ChatCompletionMessage{
 			{
