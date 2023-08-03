@@ -6,10 +6,10 @@ import (
 )
 
 func TestClient_CreateChatCompletion(t *testing.T) {
-	client, _ := NewClient("", "", "")
+	client, _ := NewClient("", "", "x")
 
 	req := &ChatCompletionRequest{
-		Model: "claude-2",
+		Model: "palm-2-chat-bison",
 		Messages: []ChatCompletionMessage{
 			{
 				Role:    ChatMessageRoleSystem,

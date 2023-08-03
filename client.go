@@ -42,14 +42,10 @@ func (c *Client) sendRequest(req *http.Request, v any) error {
 
 	c.setCommonHeaders(req)
 
-	fmt.Println(req)
 	res, err := c.config.HTTPClient.Do(req)
 	if err != nil {
 		return err
 	}
-	b, _ := io.ReadAll(res.Body)
-	fmt.Println(string(b), 2222)
-
 	defer res.Body.Close()
 
 	if isFailureStatusCode(res) {
