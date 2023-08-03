@@ -64,7 +64,6 @@ func (stream *streamReader) processLines() (*ChatCompletionResponse, error) {
 		}
 
 		noPrefixLine := bytes.TrimSpace(bytes.TrimPrefix(noSpaceLine, headerData))
-		fmt.Println(string(noSpaceLine))
 
 		if string(noPrefixLine) == "[DONE]" {
 			stream.isFinished = true
