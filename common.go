@@ -69,12 +69,15 @@ type ChatCompletionRequest struct {
 	TopK        *uint                   `json:"top_k,omitempty"`
 }
 
+type Index struct {
+	Role    string `json:"role"`
+	Content string `json:"content"`
+}
+
 type ChatCompletionChoice struct {
-	Message      string `json:"message,omitempty"`
+	Message      Index  `json:"message,omitempty"`
 	FinishReason string `json:"finish_reason,omitempty"`
-	Delta        any    `json:"delta,omitempty"`
-	Content      string `json:"content,omitempty"`
-	User         string `json:"user,omitempty"`
+	Delta        Index  `json:"delta,omitempty"`
 	Index        uint   `json:"index,omitempty"`
 }
 
